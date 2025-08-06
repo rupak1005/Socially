@@ -67,7 +67,7 @@ Before you begin, ensure you have the following installed:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/socially.git
+git clone https://github.com/rupak1005/socially.git
 cd socially/my-app
 ```
 
