@@ -4,6 +4,7 @@ import MobileNavbar from './MobileNavbar'
 import DesktopNavbar from './DesktopNavbar'
 import { currentUser } from '@clerk/nextjs/server';
 import { syncUser } from '@/actions/user.action';
+import Image from 'next/image';
 
  async function Navbar() {
   const user = await currentUser();
@@ -14,7 +15,8 @@ import { syncUser } from '@/actions/user.action';
 <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold text-primary font-mono tracking-wider">
+            <Link href="/" className="text-xl flex justify-center items-center gap-2 font-bold text-primary font-mono tracking-wider">
+            <Image src="/icon.png" alt="Socially Logo" width={32} height={32} />
               Socially
             </Link>
           </div>
