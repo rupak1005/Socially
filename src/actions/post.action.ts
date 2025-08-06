@@ -73,7 +73,7 @@ export async function getPosts() {
     return posts;
   } catch (error) {
     console.log("Error in getPosts", error);
-    throw new Error("Failed to fetch posts");
+    return []; // Return empty array instead of throwing error
   }
 }
 
@@ -97,7 +97,7 @@ export async function toggleLike(postId: string) {
       select: { authorId: true },
     });
 
-    if (!post) throw new Error("Post not found");
+    if (!post) return { success: false, error: "Post not found" };
 
     if (existingLike) {
       // unlike
@@ -146,14 +146,14 @@ export async function createComment(postId: string, content: string) {
     const userId = await getDbUserId();
 
     if (!userId) return;
-    if (!content) throw new Error("Content is required");
+    if (!content) return { success: false, error: "Content is required" };
 
     const post = await prisma.post.findUnique({
       where: { id: postId },
       select: { authorId: true },
     });
 
-    if (!post) throw new Error("Post not found");
+    if (!post) return { success: false, error: "Post not found" };
 
     // Create comment and notification in a transaction
     const [comment] = await prisma.$transaction(async (tx) => {
@@ -199,8 +199,8 @@ export async function deletePost(postId: string) {
       select: { authorId: true },
     });
 
-    if (!post) throw new Error("Post not found");
-    if (post.authorId !== userId) throw new Error("Unauthorized - no delete permission");
+    if (!post) return { success: false, error: "Post not found" };
+    if (post.authorId !== userId) return { success: false, error: "Unauthorized - no delete permission" };
 
     await prisma.post.delete({
       where: { id: postId },

@@ -31,7 +31,7 @@ export async function getProfileByUsername(username: string) {
     return user;
   } catch (error) {
     console.error("Error fetching profile:", error);
-    throw new Error("Failed to fetch profile");
+    return null; // Return null instead of throwing error
   }
 }
 
@@ -85,7 +85,7 @@ export async function getUserPosts(userId: string) {
     return posts;
   } catch (error) {
     console.error("Error fetching user posts:", error);
-    throw new Error("Failed to fetch user posts");
+    return []; // Return empty array instead of throwing error
   }
 }
 
@@ -143,14 +143,14 @@ export async function getUserLikedPosts(userId: string) {
     return likedPosts;
   } catch (error) {
     console.error("Error fetching liked posts:", error);
-    throw new Error("Failed to fetch liked posts");
+    return []; // Return empty array instead of throwing error
   }
 }
 
 export async function updateProfile(formData: FormData) {
   try {
     const { userId: clerkId } = await auth();
-    if (!clerkId) throw new Error("Unauthorized");
+    if (!clerkId) return { success: false, error: "Unauthorized" };
 
     const name = formData.get("name") as string;
     const bio = formData.get("bio") as string;
