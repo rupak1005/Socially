@@ -52,6 +52,42 @@ export async function getUserByClerkId(clerkId: string) {
   });
 }
 
+export async function getUserStats(clerkId: string) {
+  const user = await prisma.user.findUnique({
+    where: { clerkId },
+    include: {
+      _count: {
+        select: {
+          followers: true,
+          following: true,
+          posts: true,
+        },
+      },
+      posts: {
+        include: {
+          _count: {
+            select: {
+              likes: true,
+            },
+          },
+        },
+      },
+    },
+  });
+
+  if (!user) return null;
+
+  // Calculate total likes received across all posts
+  const totalLikesReceived = user.posts.reduce((total, post) => total + post._count.likes, 0);
+
+  return {
+    postsCreated: user._count.posts,
+    peopleFollowed: user._count.following,
+    likesReceived: totalLikesReceived,
+    followers: user._count.followers,
+  };
+}
+
 export async function getDbUserId() {
   const { userId: clerkId } = await auth();
   if (!clerkId) return null;

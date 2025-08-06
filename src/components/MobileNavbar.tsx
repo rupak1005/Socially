@@ -11,15 +11,38 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { useState } from "react";
-import { useAuth, SignInButton, SignOutButton } from "@clerk/nextjs";
+import { useState, useEffect } from "react";
+import { useAuth, SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
 import Link from "next/link";
+import { getUserByClerkId } from "@/actions/user.action";
 
 function MobileNavbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [userUsername, setUserUsername] = useState<string | null>(null);
   const { isSignedIn } = useAuth();
+  const { user } = useUser();
   const { theme, setTheme } = useTheme();
+
+  // Get user's username for dynamic profile routing
+  useEffect(() => {
+    const fetchUserData = async () => {
+      if (user?.id) {
+        try {
+          const userData = await getUserByClerkId(user.id);
+          if (userData) {
+            setUserUsername(userData.username);
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      }
+    };
+
+    if (isSignedIn && user?.id) {
+      fetchUserData();
+    }
+  }, [isSignedIn, user?.id]);
 
   return (
     <div className="flex md:hidden items-center space-x-2">
@@ -61,7 +84,7 @@ function MobileNavbar() {
                   </Link>
                 </Button>
                 <Button variant="ghost" className="flex items-center gap-3 justify-start" asChild>
-                  <Link href="/profile">
+                  <Link href={userUsername ? `/profile/${userUsername}` : "/profile"}>
                     <UserIcon className="w-4 h-4" />
                     Profile
                   </Link>

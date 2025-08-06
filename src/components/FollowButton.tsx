@@ -24,13 +24,17 @@ function FollowButton({ userId }: { userId: string }) {
 
   return (
     <Button
-      size={"sm"}
-      variant={"secondary"}
+      size="sm"
+      variant="outline"
       onClick={handleFollow}
       disabled={isLoading}
-      className="w-20"
+      className="text-xs px-3 py-1 h-8 hover:bg-primary hover:text-primary-foreground transition-colors"
     >
-      {isLoading ? <Loader2Icon className="size-4 animate-spin" /> : "Follow"}
+      {isLoading ? (
+        <Loader2Icon className="size-3 animate-spin" />
+      ) : (
+        "Follow"
+      )}
     </Button>
   );
 }

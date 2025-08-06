@@ -10,31 +10,45 @@ async function WhoToFollow() {
   if (users.length === 0) return null;
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Who to Follow</CardTitle>
+    <Card className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <CardHeader className="pb-4">
+        <CardTitle className="text-lg font-semibold">Who to Follow</CardTitle>
+        <p className="text-sm text-muted-foreground">Discover amazing people</p>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           {users.map((user) => (
-            <div key={user.id} className="flex gap-2 items-center justify-between ">
-              <div className="flex items-center gap-1">
+            <div key={user.id} className="flex items-center justify-between p-3 rounded-lg hover:bg-muted/50 transition-colors">
+              <div className="flex items-center gap-3">
                 <Link href={`/profile/${user.username}`}>
-                  <Avatar>
+                  <Avatar className="w-10 h-10 ring-2 ring-background">
                     <AvatarImage src={user.image ?? "/avatar.png"} />
                   </Avatar>
                 </Link>
-                <div className="text-xs">
-                  <Link href={`/profile/${user.username}`} className="font-medium cursor-pointer">
+                <div className="min-w-0 flex-1">
+                  <Link 
+                    href={`/profile/${user.username}`} 
+                    className="font-medium text-sm hover:underline truncate block"
+                  >
                     {user.name}
                   </Link>
-                  <p className="text-muted-foreground">@{user.username}</p>
-                  <p className="text-muted-foreground">{user._count.followers} followers</p>
+                  <p className="text-xs text-muted-foreground truncate">@{user.username}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {user._count.followers} {user._count.followers === 1 ? 'follower' : 'followers'}
+                  </p>
                 </div>
               </div>
               <FollowButton userId={user.id} />
             </div>
           ))}
+        </div>
+        <div className="mt-4 pt-4 border-t">
+          <Link 
+            href="/explore" 
+            className="text-sm text-primary hover:underline font-medium"
+          >
+            View more suggestions →
+          </Link>
         </div>
       </CardContent>
     </Card>
