@@ -1,10 +1,14 @@
+<div align="center">
+
 # Socially - Full-Stack Social Media Platform
 
 A modern, full-featured social media platform built with Next.js 15, featuring real-time interactions, user authentication, and a beautiful responsive design.
 
-![Socially Banner]()
+<img width="600" height="600" alt="icon" src="https://github.com/user-attachments/assets/42ff96d7-51d4-432e-95ec-db8b575e0dc6" />
 
 ### [Live Link](https://socially-neon.vercel.app/)
+
+</div>
 
 ##  Features
 
@@ -63,7 +67,7 @@ Before you begin, ensure you have the following installed:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/socially.git
+git clone https://github.com/rupak1005/socially.git
 cd socially/my-app
 ```
 
