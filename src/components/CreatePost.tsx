@@ -41,7 +41,7 @@ function CreatePost() {
   };
 
   return (
-    <Card className="mb-6 border-b bg-background/95">
+    <Card className="mb-6 border-b  bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
       <CardContent className="pt-6">
         <div className="space-y-4">
           <div className="flex space-x-4">

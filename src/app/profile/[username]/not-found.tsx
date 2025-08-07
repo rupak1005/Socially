@@ -6,7 +6,7 @@ import { HomeIcon, ArrowLeftIcon } from "lucide-react";
 export default function NotFound() {
   return (
     <div className="min-h-[80vh] grid place-items-center px-4">
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
         <CardContent className="pt-6">
           <div className="text-center space-y-6">
             {/* LARGE 404 TEXT */}

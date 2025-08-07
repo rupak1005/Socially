@@ -72,7 +72,7 @@ function PostCard({ post, dbUserId }: { post: Post; dbUserId: string | null }) {
   };
 
   return (
-    <Card className="overflow-hidden border-b bg-background/95 ">
+    <Card className="overflow-hidden border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
       <CardContent className="p-4 sm:p-6">
         <div className="space-y-4">
           <div className="flex space-x-3 sm:space-x-4">

@@ -17,7 +17,7 @@ async function Sidebar() {
 
   return (
     <div className="sticky top-20">
-      <Card className="border-b bg-background/95">
+      <Card className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
         <CardContent className="pt-6">
           <div className="flex flex-col items-center text-center">
             <Link
@@ -79,7 +79,7 @@ export default Sidebar;
 
 const UnAuthenticatedSidebar = () => (
   <div className="sticky top-20">
-    <Card className="border-b bg-background/95">
+    <Card className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 opacity-30">
       <CardHeader>
         <CardTitle className="text-center text-xl font-semibold">Welcome Back!</CardTitle>
       </CardHeader>

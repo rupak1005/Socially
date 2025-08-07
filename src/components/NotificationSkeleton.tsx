@@ -8,7 +8,7 @@ export function NotificationsSkeleton() {
 
   return (
     <div className="space-y-4">
-      <Card className="bg-background">
+      <Card className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
         <CardHeader className="border-b">
           <div className="flex items-center justify-between">
             <CardTitle>Notifications</CardTitle>

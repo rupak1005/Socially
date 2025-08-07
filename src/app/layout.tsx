@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -6,6 +7,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import { Toaster } from "react-hot-toast" 
+import BackgroundThemeWrapper from "@/components/BackgroundThemeWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,13 +44,21 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className="min-h-screen">
+            {/* LightRays Background - Only in Dark Mode */}
+            <BackgroundThemeWrapper />
+
+            {/* Content */}
+            <div className="relative z-10 min-h-screen">
               <Navbar />
               <main className="py-8">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <div className="hidden lg:block lg:col-span-3"><Sidebar /></div>
-                    <div className="lg:col-span-9">{children}</div>
+                    <div className="hidden lg:block lg:col-span-3">
+                      <Sidebar />
+                    </div>
+                    <div className="lg:col-span-9">
+                      {children}
+                    </div>
                   </div>
                 </div>
               </main>
@@ -57,7 +67,6 @@ export default function RootLayout({
           </ThemeProvider>
         </body>
       </html>
-      
     </ClerkProvider>
   );
 }

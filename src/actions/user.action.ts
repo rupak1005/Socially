@@ -196,3 +196,57 @@ export async function toggleFollow(targetUserId: string) {
     return { success: false, error: "Error toggling follow" };
   }
 }
+
+
+export async function getAllUsers() {
+  try {
+    const currentUserId = await getDbUserId();
+
+    const users = await prisma.user.findMany({
+      where: {
+        // Exclude current user if authenticated
+        ...(currentUserId ? { NOT: { id: currentUserId } } : {}),
+      },
+      select: {
+        id: true,
+        name: true,
+        username: true,
+        image: true,
+        bio: true,
+        location: true,
+        website: true,
+        createdAt: true,
+        _count: {
+          select: {
+            followers: true,
+            following: true,
+            posts: true,
+          },
+        },
+        // Check if current user is following this user
+        followers: currentUserId ? {
+          where: {
+            followerId: currentUserId,
+          },
+          select: {
+            followerId: true,
+          },
+        } : undefined,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    return users.map(user => ({
+      ...user,
+      isFollowing: user.followers && user.followers.length > 0,
+      isNewUser: new Date(user.createdAt) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), // Created in last 7 days
+      recentActivity: new Date(user.createdAt) > new Date(Date.now() - 24 * 60 * 60 * 1000), // Activity in last 24 hours
+      currentUserId,
+    }));
+  } catch (error) {
+    console.log("Error fetching all users:", error);
+    return [];
+  }
+}
