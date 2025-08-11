@@ -31,7 +31,7 @@ A modern, full-featured social media platform built with Next.js 15, featuring r
 - **Type Safety** - Full TypeScript implementation
 - **Error Handling** - Graceful error boundaries and fallbacks
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Frontend
 - **[Next.js 15](https://nextjs.org/)** - React framework with App Router
@@ -55,7 +55,7 @@ A modern, full-featured social media platform built with Next.js 15, featuring r
 - **[Prettier](https://prettier.io/)** - Code formatting
 - **[React Hot Toast](https://react-hot-toast.com/)** - Beautiful notifications
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before you begin, ensure you have the following installed:
 - Node.js 18.0 or later
@@ -63,7 +63,7 @@ Before you begin, ensure you have the following installed:
 - PostgreSQL database
 - Git
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone the Repository
 ```bash
@@ -123,7 +123,7 @@ pnpm dev
 
 Visit [http://localhost:3000](http://localhost:3000) to see your application.
 
-## 📁 Project Structure
+## Project Structure
 ```
 my-app/
 ├── prisma/
@@ -161,7 +161,7 @@ my-app/
 └── next.config.ts # Next.js configuration
 ```
 
-## 🗄️ Database Schema
+## Database Schema
 
 ### Core Models
 
@@ -213,7 +213,7 @@ model Post {
 - `COMMENT` - When someone comments on your post  
 - `FOLLOW` - When someone follows you
 
-## 🎨 UI Components
+## UI Components
 
 ### Design System
 - **Consistent Spacing** - 4px, 8px, 16px, 24px, 32px scale
@@ -230,7 +230,7 @@ model Post {
 - **Sidebar** - User info and recommendations
 - **NotificationCard** - Real-time notification display
 
-## 🔧 API Routes & Server Actions
+## API Routes & Server Actions
 
 ### Server Actions
 All server actions are located in `src/actions/`:
@@ -261,7 +261,7 @@ All server actions are located in `src/actions/`:
 - `getNotifications()` - Get user notifications
 - `markNotificationsAsRead()` - Mark notifications as read
 
-## 🎯 Performance Optimizations
+## Performance Optimizations
 
 ### Next.js Optimizations
 - **Server Components** - Default server rendering for better performance
@@ -282,7 +282,7 @@ All server actions are located in `src/actions/`:
 - **Error Boundaries** - Graceful error handling
 - **Toast Notifications** - Non-intrusive user feedback
 
-## 🔒 Security Features
+## Security Features
 
 ### Authentication
 - **Clerk Integration** - Secure authentication with social logins
@@ -296,7 +296,7 @@ All server actions are located in `src/actions/`:
 - **Sanitization** - User input sanitization
 - **Rate Limiting** - API rate limiting (recommended for production)
 
-## 📱 Responsive Design
+## Responsive Design
 
 ### Breakpoints
 - **Mobile** - < 768px
@@ -309,7 +309,7 @@ All server actions are located in `src/actions/`:
 - **Optimized Images** - Responsive image sizing
 - **Touch Targets** - Minimum 44px touch targets
 
-## 🚀 Deployment
+## Deployment
 
 ### Vercel (Recommended)
 1. Push your code to GitHub
@@ -332,7 +332,7 @@ UPLOADTHING_APP_ID="your_production_uploadthing_app_id"
 npx prisma migrate deploy
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Testing Strategy
 - **Unit Tests** - Component and function testing
@@ -351,7 +351,7 @@ npm run test:e2e
 npm run test:coverage
 ```
 
-## 🔄 Development Workflow
+## Development Workflow
 
 ### Git Workflow
 1. Create feature branch from `main`
@@ -365,7 +365,7 @@ npm run test:coverage
 - **TypeScript** - Strict type checking
 - **Conventional Commits** - Standardized commit messages
 
-## 📊 Monitoring & Analytics
+## Monitoring & Analytics
 
 ### Performance Monitoring
 - **Web Vitals** - Core web vitals tracking
@@ -377,7 +377,7 @@ npm run test:coverage
 - **Feature Usage** - Monitor feature adoption
 - **Conversion Metrics** - Sign-up and engagement rates
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
@@ -391,11 +391,11 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 ### Code of Conduct
 Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Next.js Team** - Amazing React framework
 - **Clerk** - Seamless authentication
@@ -404,14 +404,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Shadcn/ui** - Gorgeous component library
 - **UploadThing** - Simple file uploads
 
-## 📞 Support
+## Support
 
 - **Documentation** - [docs.socially.com](https://docs.socially.com)
 - **Issues** - [GitHub Issues](https://github.com/yourusername/socially/issues)
 - **Discussions** - [GitHub Discussions](https://github.com/yourusername/socially/discussions)
 - **Email** - support@socially.com
 
-## 🗺️ Roadmap
+## Roadmap
 
 ### Upcoming Features
 - [ ] Direct Messaging
@@ -436,4 +436,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Built with ❤️ by [Rupak Kumar](https://github.com/rupak1005)**
 
-⭐ Star this repo if you find it helpful!
+ Star this repo if you find it helpful!
